@@ -5,3 +5,6 @@
 
 ## Compilation using Ofast switch
 ![OFast Output](https://github.com/user-attachments/assets/c8657ebb-1180-478a-b5b0-8d7e010c96af)
+
+## Observation
+From the above images we can observe that Ofast resduces the number of instruction to 12 compared to 15 in O1 switch.
