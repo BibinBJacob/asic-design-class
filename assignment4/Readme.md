@@ -26,61 +26,61 @@ RISC-V instructions are categorized into several types, each with its own format
 
 ## 32-bit Binary and Hexadecimal Encodings
 
-Below is a list of RISC-V instructions with their 32-bit binary and hexadecimal encodings.
+Below is a list of RISC-V instructions with their 32-bit binary 
 
 ### R-type Instructions
 - **ADD r10, r11, r12**
   - **Binary**: `0000000 01100 01011 000 01010 0110011`
-  - **Hexadecimal**: `00CCB033`
+  
 
 - **SUB r12, r10, r11**
   - **Binary**: `0100000 01010 01011 000 01100 0110011`
-  - **Hexadecimal**: `400B033`
+  
 
 - **AND r11, r10, r12**
   - **Binary**: `0000000 01100 01010 111 01011 0110011`
-  - **Hexadecimal**: `00CCB033`
+  
 
 - **OR r8, r11, r5**
   - **Binary**: `0000000 00101 01011 110 01000 0110011`
-  - **Hexadecimal**: `000B4033`
+ 
 
 - **XOR r8, r10, r4**
   - **Binary**: `0000000 00100 01010 100 01000 0110011`
-  - **Hexadecimal**: `000A4033`
+  
 
 - **SLT r00, r1, r4**
   - **Binary**: `0000000 00100 00001 010 00000 0110011`
-  - **Hexadecimal**: `00010233`
+  
 
 - **SLL r05, r01, r1**
   - **Binary**: `0000000 00001 00001 001 00101 0110011`
-  - **Hexadecimal**: `00028233`
+ 
 
 ### I-type Instructions
 - **ADDI r02, r2, 5**
   - **Binary**: `000000000101 00010 000 00010 0010011`
-  - **Hexadecimal**: `00510113`
+ 
 
 - **LW r03, r01, 2**
   - **Binary**: `000000000010 00001 010 00011 0000011`
-  - **Hexadecimal**: `00210103`
+  
 
 ### S-type Instructions
 - **SW r2, r0, 4**
   - **Binary**: `0000000 00000 00010 010 00000 0100011`
-  - **Hexadecimal**: `00028323`
+  
 
 ### B-type Instructions
 - **BNE r0, r0, 20**
   - **Binary**: `0000000 00000 00000 001 0100 1100011`
-  - **Hexadecimal**: `00000263`
+  
 
 - **BEQ r0, r0, 15**
   - **Binary**: `0000000 00000 00000 000 1111 1100011`
-  - **Hexadecimal**: `00000E63`
+ 
 
 ### R-type Instructions with Shifts
 - **SRL r06, r01, r1**
   - **Binary**: `0000000 00001 00001 101 00110 0110011`
-  - **Hexadecimal**: `000282B3`
+  
