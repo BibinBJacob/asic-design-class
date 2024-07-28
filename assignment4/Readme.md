@@ -1,6 +1,6 @@
 # RISC-V Instruction Encodings
 
-This repository provides the 32-bit binary and hexadecimal instruction encodings for a set of RISC-V instructions. The encodings cover various types of instructions, including arithmetic, logical, immediate, store, load, and branch operations.
+This repository provides the 32-bit binary  encodings for a set of RISC-V instructions. The encodings cover various types of instructions, including arithmetic, logical, immediate, store, load, and branch operations.
 
 ## Instruction Types
 
