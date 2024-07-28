@@ -20,7 +20,7 @@ Sum of numbers from 1 to 100 is 5050.
 ![OFast Output](https://github.com/user-attachments/assets/c8657ebb-1180-478a-b5b0-8d7e010c96af)
 
 ## Observation
-From the above images we can observe that Ofast resduces the number of instruction to 12 compared to 15 in O1 switch.
+From the above images we can observe that Ofast reduces the number of instruction to 12 compared to 15 in O1 switch.
 
 # Task 3 : Spike Simulation and observation of RISC-V Objdump
 
