@@ -41,7 +41,7 @@ From the above images we can observe that Ofast resduces the number of instructi
 
 # Task 4 :  RISC-V Instruction Encodings
 
-This repository provides the 32-bit binary  encodings for a set of RISC-V instructions. The encodings cover various types of instructions, including arithmetic, logical, immediate, store, load, and branch operations.
+32-bit binary  encodings for a set of RISC-V instructions is calculated. The encodings cover various types of instructions, including arithmetic, logical, immediate, store, load, and branch operations.
 
 ## Instruction Types
 
