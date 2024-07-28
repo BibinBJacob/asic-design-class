@@ -6,6 +6,9 @@
 ## Output
 ![Output1](https://github.com/user-attachments/assets/736f211b-c923-4118-85e3-9765bf240517)
 
+## Result
+Sum of numbers from 1 to 100 is 5050.
+
 
 
 # Task 2 : RISC-V Compilation of a simple C Program
