@@ -39,7 +39,7 @@ From the above images we can observe that Ofast resduces the number of instructi
 
 - Stack pointer gets updated by -16 in decimal which is -10 in hexadecimal so 0x0000003ffffffb50 gets updated to 0x0000003ffffffb40
 
-# Task 4 : # RISC-V Instruction Encodings
+# Task 4 :  RISC-V Instruction Encodings
 
 This repository provides the 32-bit binary  encodings for a set of RISC-V instructions. The encodings cover various types of instructions, including arithmetic, logical, immediate, store, load, and branch operations.
 
