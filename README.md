@@ -115,6 +115,8 @@ Below is a list of RISC-V instructions with their 32-bit binary
 ### B-type Instructions
 - **BNE r0, r0, 20**
   - **Binary**: `0000000 00000 00000 001 0100 1100011`
+
+
   
 
 - **BEQ r0, r0, 15**
