@@ -38,6 +38,8 @@
 |  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |   
 
 9. Analysing the Output Waveform of various instructions
+
+
  i) Add R6,R2,R1
  ![Add instruction](https://github.com/user-attachments/assets/bde13c2f-82c7-42c5-99df-8b1d166ffa1f)
 Output: 1+2=3
