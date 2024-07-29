@@ -19,7 +19,8 @@
 
 7. All the instructions are hardcoaded
  ![Hardcoded](https://github.com/user-attachments/assets/6d2b07f5-1dbf-43a0-b294-9b8187cb94c0)
-8.  Following are the differences between standard RISCV ISA and Hardcoded ISA:  
+
+9.  Following are the differences between standard RISCV ISA and Hardcoded ISA:  
  
 
 |  **Operation**  |  **Standard RISCV ISA**  |  **Hardcoded ISA**  |  
