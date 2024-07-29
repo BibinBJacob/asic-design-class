@@ -187,7 +187,8 @@ iv) OR R9,R2,R5
 Output: 2|5=7
 
 v) XOR R10,R1,R4
-![XOR instruction](https://github.com/user-attachments/assets/9fbf2241-9cc8-4ce8-9abb-2fd32720a64c)
+![XOR Instruction](https://github.com/user-attachments/assets/dfa2601d-e2c1-427d-a990-45f7ce6072ef)
+
 Output: 1^4=5
 
 vi) SLT R1,R2,R4
