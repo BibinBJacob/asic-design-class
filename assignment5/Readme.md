@@ -18,7 +18,7 @@
 
 7. All the instructions are hardcoaded
 
-8. #### Following are the differences between standard RISCV ISA and the Instruction Set given in the reference repository:  
+8.  Following are the differences between standard RISCV ISA and Hardcoded ISA:  
   
 |  **Operation**  |  **Standard RISCV ISA**  |  **Hardcoded ISA**  |  
 |  :----:  |  :----:  |  :----:  |  
