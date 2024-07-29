@@ -10,7 +10,7 @@
 	```
 5. To see the simulation waveform in GTKWave, enter the following command:
 	```
-	$ gtkwave bibin_rv32i.vcd
+	$ gtkwave bibin.vcd
 	```
 
 
