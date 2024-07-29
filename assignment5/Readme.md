@@ -20,7 +20,8 @@
 7. All the instructions are hardcoaded
 
 8.  Following are the differences between standard RISCV ISA and Hardcoded ISA:  
-  
+  ![Hardcoded](https://github.com/user-attachments/assets/6d2b07f5-1dbf-43a0-b294-9b8187cb94c0)
+
 |  **Operation**  |  **Standard RISCV ISA**  |  **Hardcoded ISA**  |  
 |  :----:  |  :----:  |  :----:  |  
 |  ADD R6, R2, R1  |  32'h00110333  |  32'h02208300  |  
@@ -38,4 +39,7 @@
 
 9. Analysing the Output Waveform of various instructions
  i) Instruction 1: Add R6,R2,R1
+ ![Add instruction](https://github.com/user-attachments/assets/bde13c2f-82c7-42c5-99df-8b1d166ffa1f)
+Output: 1+2=3
+
  
