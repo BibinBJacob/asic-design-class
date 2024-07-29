@@ -127,7 +127,7 @@ Below is a list of RISC-V instructions with their 32-bit binary
 - **SRL r06, r01, r1**
   - **Binary**: `0000000 00001 00001 101 00110 0110011`
 
-# Task 5  By making use of RISCV Core: Verilog Netlist and Testbench, perform an experiment of Functional Simulation and observe the waveforms
+# Task 5 : By making use of RISCV Core: Verilog Netlist and Testbench, perform an experiment of Functional Simulation and observe the waveforms
 ### Steps to perform functional simulation of RISCV  
 1. Create a new directory with your name ```mkdir <your_name>```
 2. Create two files by using ```touch``` command as ```bibin_rv32i.v``` and ```bibin_rv32i_tb.v```  
