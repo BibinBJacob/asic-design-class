@@ -38,7 +38,7 @@
 |  SRL R16, R14, R2  |  32'h0030a123  |  32'h00271803  |
 |  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |   
 
-9. Analysing the Output Waveform of various instructions
+8. Analysing the Output Waveform of various instructions
 
 
  i) Add R6,R2,R1
