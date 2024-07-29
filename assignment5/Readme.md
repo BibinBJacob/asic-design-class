@@ -18,9 +18,9 @@
 ![Opening](https://github.com/user-attachments/assets/dfd71184-5afd-4321-aab6-64a0c3e32667)
 
 7. All the instructions are hardcoaded
-
+ ![Hardcoded](https://github.com/user-attachments/assets/6d2b07f5-1dbf-43a0-b294-9b8187cb94c0)
 8.  Following are the differences between standard RISCV ISA and Hardcoded ISA:  
-  ![Hardcoded](https://github.com/user-attachments/assets/6d2b07f5-1dbf-43a0-b294-9b8187cb94c0)
+ 
 
 |  **Operation**  |  **Standard RISCV ISA**  |  **Hardcoded ISA**  |  
 |  :----:  |  :----:  |  :----:  |  
@@ -38,8 +38,12 @@
 |  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |   
 
 9. Analysing the Output Waveform of various instructions
- i) Instruction 1: Add R6,R2,R1
+ i) Add R6,R2,R1
  ![Add instruction](https://github.com/user-attachments/assets/bde13c2f-82c7-42c5-99df-8b1d166ffa1f)
 Output: 1+2=3
 
- 
+ii) Sub R7,R1,R2 
+![Subtraction Instruction](https://github.com/user-attachments/assets/820bf0cb-9803-4148-9a54-bad9d5fab48a)
+Output: 1-2=-1
+
+
