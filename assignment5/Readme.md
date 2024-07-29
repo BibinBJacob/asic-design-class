@@ -15,6 +15,7 @@
 
 
 6. The GTKWave will be opened and following window will be appeared
+![Opening](https://github.com/user-attachments/assets/dfd71184-5afd-4321-aab6-64a0c3e32667)
 
 7. All the instructions are hardcoaded
 
