@@ -209,7 +209,7 @@ Output : (0001)<<2 = 0100 = 4 in decimal
 
 # Task 6  Capacitor Charging Application compilation using GCC and RISC-V GCC
 
-1. **Code Snippet:**
+### 1. **Code Snippet:**
  ```c
 #include <stdio.h>
 #include <math.h>
@@ -251,8 +251,18 @@ int main() {
 }
 ```
 
+### 2. ** Compilation of the code with GCC Compiler**
+
+![C code](https://github.com/user-attachments/assets/4c1df86c-5435-40b7-849b-e481bce8b2f9)
+
+### 3. **Compilation of the code using RISC-V GCC Compiler**
 
 
+![Riscv output](https://github.com/user-attachments/assets/159232ec-2d01-412a-b6f3-5e2241aa5b27)
+
+## Result
+
+### The output received after both GCC Compilation and Risc-V GCC Compilation are same.
 
 
 
