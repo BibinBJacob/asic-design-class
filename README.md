@@ -207,7 +207,7 @@ ix) SLL R15,R1,R2
 ![SLL Instruction](https://github.com/user-attachments/assets/39e698cc-c217-48b1-82a1-046d9192a563)
 Output : (0001)<<2 = 0100 = 4 in decimal
 
-# Task 6  Capacitor Charging Application compilation using GCC and RISC-V GCC
+# Task 6 : Capacitor Charging Application compilation using GCC and RISC-V GCC
 
 ### 1. **Code Snippet:**
  ```c
@@ -251,7 +251,7 @@ int main() {
 }
 ```
 
-### 2. ** Compilation of the code with GCC Compiler**
+### 2. **Compilation of the code with GCC Compiler**
 
 ![C code](https://github.com/user-attachments/assets/4c1df86c-5435-40b7-849b-e481bce8b2f9)
 
