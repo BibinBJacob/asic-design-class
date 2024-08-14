@@ -207,6 +207,50 @@ ix) SLL R15,R1,R2
 ![SLL Instruction](https://github.com/user-attachments/assets/39e698cc-c217-48b1-82a1-046d9192a563)
 Output : (0001)<<2 = 0100 = 4 in decimal
 
+# Task 6  Capacitor Charging Application compilation using GCC and RISC-V GCC
+
+1. **Code Snippet:**
+ ```c
+#include <stdio.h>
+#include <math.h>
+
+// Function to simulate capacitor charging
+void simulate_capacitor_charging(double R, double C, double V_max, double time_step, double total_time) {
+    double t = 0.0;
+    double V = 0.0;
+
+    printf("Time(s)\t\tVoltage(V)\n");
+    printf("-----------------------------\n");
+
+    while (t <= total_time) {
+        V = V_max * (1 - exp(-t / (R * C)));
+        printf("%.2f\t\t%.2f\n", t, V);
+        t += time_step;
+    }
+}
+
+int main() {
+    double R, C, V_max, time_step, total_time;
+
+    // Input parameters for the simulation
+    printf("Enter the resistance (R) in ohms: ");
+    scanf("%lf", &R);
+    printf("Enter the capacitance (C) in farads: ");
+    scanf("%lf", &C);
+    printf("Enter the supply voltage (V_max) in volts: ");
+    scanf("%lf", &V_max);
+    printf("Enter the time step for the simulation (in seconds): ");
+    scanf("%lf", &time_step);
+    printf("Enter the total time for the simulation (in seconds): ");
+    scanf("%lf", &total_time);
+
+    // Simulate capacitor charging
+    simulate_capacitor_charging(R, C, V_max, time_step, total_time);
+
+    return 0;
+}
+```
+
 
 
 
