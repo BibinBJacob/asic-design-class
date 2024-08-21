@@ -282,6 +282,7 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![Decode](https://github.com/user-attachments/assets/bc66588f-f169-490c-b0ef-5c87c031f5cd)
 
+## 4) Control 
 
 
 
