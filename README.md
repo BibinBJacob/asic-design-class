@@ -303,6 +303,27 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ### Result : RISC-V Core CPU is implemented
 
+## 9) Pipelining the CPU
+
+
+![Valid Pipeline](https://github.com/user-attachments/assets/2f8498c2-bd5c-4b1a-8d64-01a4f6ae0418)
+
+![Validating Code](https://github.com/user-attachments/assets/8e29cebb-80af-4d85-b3b5-f578f0d9b6aa)
+
+## 10) 5-Stage Pipelined RISC-V Processor
+
+![Pipelined RISC-V](https://github.com/user-attachments/assets/86e0e6b0-dfb4-4407-b202-494158e9c92b)
+
+![Pipelined Risc-V Architecture](https://github.com/user-attachments/assets/52d6daba-faa7-47f1-9528-2623c7ae407a)
+
+### Result : RISC-V Core CPU is 5-stage pipelined.
+
+
+
+
+
+
+
 
 
 
