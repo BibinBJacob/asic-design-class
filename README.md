@@ -276,7 +276,8 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ## 2) Instruction Fetch
 
-![Instruction Fetch](https://github.com/user-attachments/assets/b20def28-3968-4801-8093-6cc201f3a56b)
+![Instruction Fetch](https://github.com/user-attachments/assets/ebc8a122-6c61-4c62-83bb-bd3e02b465ce)
+
 
 
 
