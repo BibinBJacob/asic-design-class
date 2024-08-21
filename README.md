@@ -294,6 +294,16 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![Register Write](https://github.com/user-attachments/assets/a853b4ec-cba5-4d53-badb-5b177321a8eb)
 
+## 7) Branching
+
+![Branching](https://github.com/user-attachments/assets/4b464a4f-6cde-4525-b827-3e9b8619ff3c)
+
+## 8) Testbench
+![Testbench](https://github.com/user-attachments/assets/289ac6cf-853b-4dde-94fd-155aa3f0bcb1)
+
+### Result : RISC-V Core CPU is implemented
+
+
 
 
 
