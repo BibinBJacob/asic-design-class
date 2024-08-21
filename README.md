@@ -272,7 +272,13 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ##  1) Program Counter 
 
-![Program Counter](https://github.com/user-attachments/assets/dad428a3-7810-4a25-8616-e3bb400269ba)
+![Program Counter Full](https://github.com/user-attachments/assets/f7587da7-ffc3-435a-9dbc-e90de64b2fa8)
+
+## 2) Instruction Fetch
+
+![Instruction Fetch](https://github.com/user-attachments/assets/b20def28-3968-4801-8093-6cc201f3a56b)
+
+
 
 
 
