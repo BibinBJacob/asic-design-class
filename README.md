@@ -264,6 +264,9 @@ int main() {
 
 ### The output received after both GCC Compilation and Risc-V GCC Compilation are same.
 
+# Task 7 : 5-Stage Pipelined RISC-V Processor
+
+
 
 
 
