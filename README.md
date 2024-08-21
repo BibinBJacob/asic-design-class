@@ -290,7 +290,9 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![ALU](https://github.com/user-attachments/assets/23a990ce-da7d-4d0c-953b-0fc65a926c13)
 
+## 6) Register file write
 
+![Register Write](https://github.com/user-attachments/assets/a853b4ec-cba5-4d53-badb-5b177321a8eb)
 
 
 
