@@ -266,6 +266,10 @@ int main() {
 
 # Task 7 : 5-Stage Pipelined RISC-V Processor
 
+Here we are going to design a simple RISC-V Core CPU as per the below diagram.
+
+![RISC-V Core Architecture](https://github.com/user-attachments/assets/458c4d1a-9ac3-490c-baa2-bb766ea122ed)
+
 
 
 
