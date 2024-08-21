@@ -282,7 +282,14 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![Decode](https://github.com/user-attachments/assets/bc66588f-f169-490c-b0ef-5c87c031f5cd)
 
-## 4) Control 
+## 4) Register File Read
+
+![Register Read](https://github.com/user-attachments/assets/8cb6eb2e-6fbb-4a38-b3b3-b2783f025a85)
+
+## 5) ALU
+
+![ALU](https://github.com/user-attachments/assets/23a990ce-da7d-4d0c-953b-0fc65a926c13)
+
 
 
 
