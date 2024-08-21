@@ -270,8 +270,9 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![RISC-V Core Architecture](https://github.com/user-attachments/assets/458c4d1a-9ac3-490c-baa2-bb766ea122ed)
 
+##  1) Program Counter 
 
-
+![Program Counter](https://github.com/user-attachments/assets/dad428a3-7810-4a25-8616-e3bb400269ba)
 
 
 
