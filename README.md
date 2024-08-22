@@ -316,7 +316,12 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 
 ![Pipelined Risc-V Architecture](https://github.com/user-attachments/assets/52d6daba-faa7-47f1-9528-2623c7ae407a)
 
-### Result : RISC-V Core CPU is 5-stage pipelined.
+![Final sum](https://github.com/user-attachments/assets/74a94aa2-9ed1-4c7d-aba3-6520a34ae1c9)
+
+### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format
+
+
+
 
 
 
