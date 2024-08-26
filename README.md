@@ -321,7 +321,7 @@ Here we are going to design a simple RISC-V Core CPU as per the below diagram.
 ### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format
 
 # Task 8 : Conversion from TLV into Verilog using Sandpiper-SaaS compiler.
-### Step-by-Step Procedure:
+
 
 1. **Install Required Packages:**
 Begin by installing the necessary packages using pip:
@@ -374,7 +374,7 @@ gtkwave pre_synth_sim.vcd
 
 ![GTKWave Output](https://github.com/user-attachments/assets/897a01fd-aab4-42a3-b7f1-7b85885d7a98)
 
-
+### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format
 
 
 
