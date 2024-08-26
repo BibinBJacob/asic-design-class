@@ -371,10 +371,13 @@ gtkwave pre_synth_sim.vcd
 ```
 ![GTK Code](https://github.com/user-attachments/assets/971dfc55-3d5d-417e-ad11-802aa7b99f79)
 
-
+### Verilog Waveform
 ![GTKWave Output](https://github.com/user-attachments/assets/897a01fd-aab4-42a3-b7f1-7b85885d7a98)
 
-### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format
+### Comparison with TL Verilog Waveform
+![Final sum](https://github.com/user-attachments/assets/74a94aa2-9ed1-4c7d-aba3-6520a34ae1c9)
+
+### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format is same for Verilog and TL Verilog.
 
 
 
