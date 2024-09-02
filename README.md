@@ -380,6 +380,20 @@ gtkwave pre_synth_sim.vcd
 ### Result : Final waveform showing the sum of first 1 to 9 numbers as 2D in hex format is same for Verilog and TL Verilog.
 
 
+# Task 9 : BabySoc Simulation
+
+## Two IPs PLL and DAC are added to RISC-V Core
+
+### i) Phase-Locked Loop
+Phase-Locked Loop (PLL) is a control system that generates an output signal whose phase is related to the phase of an input signal. It is widely used in telecommunications, computers, and other digital systems for synchronizing signals, generating stable frequencies, and recovering a signal from noise.
+
+### ii) Digital-to-Analog Converter
+A Digital-to-Analog Converter (DAC) is a device that converts digital data, usually in the form of binary numbers, into an analog signal. This is commonly used in audio systems to convert digital audio files into analog signals that can be played through speakers or headphones.
+
+
+
+
+
 
 
 
