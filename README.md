@@ -407,7 +407,13 @@ We then run this .vcd file on gtkwave to observe the output
 ```bash
 gtkwave pre_synth_sim.vcd
 ```
+## Running the Command
 
+![RunCommand](https://github.com/user-attachments/assets/d33dfeaf-d65c-4a96-8c9e-b701a666277e)
+
+## Output Waveform 
+
+![Output Waveform](https://github.com/user-attachments/assets/74381a4a-b744-463c-ba5d-d271e00f3881)
 
 
 
