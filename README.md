@@ -390,6 +390,23 @@ Phase-Locked Loop (PLL) is a control system that generates an output signal whos
 ### ii) Digital-to-Analog Converter
 A Digital-to-Analog Converter (DAC) is a device that converts digital data, usually in the form of binary numbers, into an analog signal. This is commonly used in audio systems to convert digital audio files into analog signals that can be played through speakers or headphones.
 
+Commands used to run the rvmyth.v file
+
+```bash
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+```
+
+After this we dump the ./pre_synth_sim.out file to create the .vcd file using the following command
+
+```bash
+./pre_synth_sim.out
+```
+
+We then run this .vcd file on gtkwave to observe the output
+
+```bash
+gtkwave pre_synth_sim.vcd
+```
 
 
 
