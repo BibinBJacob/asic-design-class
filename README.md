@@ -415,6 +415,22 @@ gtkwave pre_synth_sim.vcd
 
 ![Output Waveform](https://github.com/user-attachments/assets/74381a4a-b744-463c-ba5d-d271e00f3881)
 
+# Task10 : RTL design using Verilog with SKY130 Technology 
+
+## Installation
+```
+sudo -i
+sudo apt-get install git
+ls
+cd /home/bibinbjacob
+mkdir VLSI
+cd VLSI
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+cd sky130RTLDesignAndSynthesisWorkshop/verilog_files
+ls
+```
+
+
 
 
 
