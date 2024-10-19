@@ -530,7 +530,13 @@ show
 write_verlog good_mux_netlist.v
 write_verilog -noattr good_mux_netlist.v
 ```
+![Yosys](https://github.com/user-attachments/assets/0e97e047-4873-4f1b-b505-cab2e228b60c)
 
+![V5](https://github.com/user-attachments/assets/0f01aa14-9e61-4d0f-9b74-173f6ae0a547)
+
+![V6](https://github.com/user-attachments/assets/d49fa509-7a2a-4edb-ad77-4238a08b7119)
+
+![V7](https://github.com/user-attachments/assets/49df58d6-2b2a-4946-9e48-d0d9304848ca)
 
 
 
