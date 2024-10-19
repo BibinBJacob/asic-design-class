@@ -538,6 +538,15 @@ write_verilog -noattr good_mux_netlist.v
 
 ![V7](https://github.com/user-attachments/assets/49df58d6-2b2a-4946-9e48-d0d9304848ca)
 
+## Day 2: Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+
+Run the below commands to view the contents inside the .lib file:
+
+```
+```
+
+
+
 
 
 
