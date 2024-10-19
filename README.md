@@ -1,4 +1,4 @@
-![GTK1](https://github.com/user-attachments/assets/9f3c081b-bba8-45ee-9273-dbc9639c5b51)# ASIC Design Project
+
 
 # Task 1: Compiling the C code in GCC. Sum of numbers from 1 to 100 is calculated.
 ## Input
