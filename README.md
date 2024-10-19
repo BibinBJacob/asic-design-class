@@ -1,4 +1,4 @@
-# ASIC Design Project
+![GTK1](https://github.com/user-attachments/assets/9f3c081b-bba8-45ee-9273-dbc9639c5b51)# ASIC Design Project
 
 # Task 1: Compiling the C code in GCC. Sum of numbers from 1 to 100 is calculated.
 ## Input
@@ -431,7 +431,85 @@ ls
 ```
 ![Inst1](https://github.com/user-attachments/assets/8b94f035-f345-40a0-b62d-385082aba6e5)
 
+The below consists of the verilog files used in this lab:
+
 ![Inst2](https://github.com/user-attachments/assets/bf6d25a8-e631-42af-84a0-0bd710f296fa)
+
+## Day1 Introduction to Verilog RTL design and Synthesis
+
+Run the following commands to simulate the verilog code 'good_mux.v'. The first line will compile and check for syntax errors in both the design and testbench. An executable file 'a.out' is generated on successful compilation. On executing a.out, a vcd file is generated that captures changes in the input and output values. GTKWave is used to view the waveforms
+
+```
+iverilog good_mux.v tb_good_mux.v
+./a.out
+gtkwave tb_good_mux.vcd
+```
+![GTK1](https://github.com/user-attachments/assets/68e8e62d-91b3-46e0-8475-bb12a9cdad0c)
+
+**Code for good_mux.v :**
+
+```
+module good_mux (input i0 , input i1 , input sel , output reg y);
+always @ (*)
+begin
+	if(sel)
+		y <= i1;
+	else 
+		y <= i0;
+end
+endmodule
+
+```
+
+**Code for tb_good_mux.v :**
+
+```
+`timescale 1ns / 1ps
+module tb_good_mux;
+	// Inputs
+	reg i0,i1,sel;
+	// Outputs
+	wire y;
+
+        // Instantiate the Unit Under Test (UUT)
+	good_mux uut (
+		.sel(sel),
+		.i0(i0),
+		.i1(i1),
+		.y(y)
+	);
+
+	initial begin
+	$dumpfile("tb_good_mux.vcd");
+	$dumpvars(0,tb_good_mux);
+	// Initialize Inputs
+	sel = 0;
+	i0 = 0;
+	i1 = 0;
+	#300 $finish;
+	end
+
+always #75 sel = ~sel;
+always #10 i0 = ~i0;
+always #55 i1 = ~i1;
+endmodule
+
+```
+Synthesizer is the tool used for converting the RTL to netlist. Yosys is one such open source synthesizer. Yosys optimizes the design, mapping it to specific target technology libraries or FPGA architectures, and generates an optimized netlist that can be further analyzed and prepared for physical layout and fabrication.
+
+**Yosys Flow**
+
+![image](https://github.com/user-attachments/assets/b70ab253-cba9-41eb-9d5b-ad23971384cd)
+
+**Verify the Synthesis**
+
+The same testbench that is used for the simulation can be used for the synthesized netlist as well.
+
+![image](https://github.com/user-attachments/assets/6e56fdd0-c17e-4dad-b4c2-0b8c3828b904)
+
+
+
+
 
 
 
