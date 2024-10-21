@@ -784,6 +784,81 @@ Netlist:
 ![image](https://github.com/user-attachments/assets/a6b6a03b-0b96-467b-9ad8-3367e746b676)
 
 
+**Optimizations:**
+
+Example 1:
+
+Consider the verilog code 'mult_2.v' :
+
+```
+module mul2 (input [2:0] a, output [3:0] y);
+assign y = a * 2;
+endmodule
+```
+
+Truth Table:
+
+| a2 | a1 | a0 | y3 | y2 | y1 | y0 |
+|---|---|---|---|---|---|---|
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | 0 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 1 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 | 1 | 0 |
+
+We can see the multiplication of a number by 2 doesnt really need any extra hardware we just need to append the LSB's with zeroes and the remaining bits are the input bits of same, It can be realised by grouding the LSB's and wiring the input properly to the output.
+
+
+Run the below code to view the netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mult_2.v
+synth -top mul2
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr mult_2_net.v
+```
+![Screenshot from 2024-10-21 19-49-23](https://github.com/user-attachments/assets/5e00f23e-97c4-4188-ada3-056a3a9b6e9f)
+
+Netlist
+
+![Screenshot from 2024-10-21 19-53-36](https://github.com/user-attachments/assets/392770d0-4f3a-42ba-b569-cb834c80ad5b)
+
+Example 2:
+
+Consider the verilog code 'mult_8.v' :
+
+```
+module mult8 (input [2:0] a , output [5:0] y);
+	assign y = a * 9;
+endmodule
+```
+
+In this design the 3-bit input number "a" is multiplied by 9 i.e (a*9) which can be re-written as (a*8) + a . The term (a*8) is nothing but a left shifting the number a by three bits. Consider that a = a2 a1 a0. (a*8) results in a2 a1 a0 0 0 0. (a*9)=(a*8)+a = a2 a1 a0 a2 a1 a0 = aa(in 6 bit format). Hence in this case no hardware realization is required. The synthesized netlist of this design is shown below:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mult_8.v
+synth -top mult8
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr mult_8_net.v
+```
+
+![image](https://github.com/user-attachments/assets/dc7480c5-f8f9-4186-b655-408a9381cdd6)
+
+Netlist:
+
+![image](https://github.com/user-attachments/assets/495a4cdf-7c6e-42a7-abd9-9d538c691cf6)
+
 
 
 
