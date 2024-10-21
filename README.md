@@ -601,7 +601,30 @@ The following statistics are displayed:
 
 ![Screenshot from 2024-10-21 16-12-48](https://github.com/user-attachments/assets/3631463b-dd45-4e5b-962c-1c0e22b30e8f)
 
+Netlist
+
 ![Screenshot from 2024-10-21 16-19-10](https://github.com/user-attachments/assets/35b29151-fd13-4f54-a630-892c4684a00d)
+
+Hierarchical netlist code:
+
+![Screenshot from 2024-10-21 16-26-22](https://github.com/user-attachments/assets/97d15ef2-2025-432d-8b09-070491fa00d1)
+
+To perform **flat synthesis** on the `multiple_modules.v` file type the following commands:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_modules.v
+synth -top multiple_modules
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+flatten
+show
+write_verilog -noattr multiple_modules_flat.v
+```
+The following statistics are displayed:
+
+
+
 
 
 
