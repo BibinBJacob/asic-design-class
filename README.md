@@ -555,7 +555,53 @@ We can also find different versions of the same cell. For example, consider the 
 ![Screenshot from 2024-10-21 15-33-46](https://github.com/user-attachments/assets/a4a6b15e-8754-4f2a-aaba-5bc36aaf89ec)
 ![Screenshot from 2024-10-21 15-33-36](https://github.com/user-attachments/assets/cd377b49-8d5f-49e7-9f89-b3048157bbb0)
 
+We can observe that:
 
+* and2_0 -- taking the least area, more delay and low power.
+* and2_1 -- taking more area, less delay and high power.
+* and2_2 -- taking the largest area, larger delay and highest power.
+
+
+Hierarchical vs Flat Synthesis:
+
+Hierarchical synthesis involves synthesizing a complex design by breaking it down into various sub-modules, where each module is synthesized separately to generate gate-level netlists and then integrated. Hierarchical synthesis allows for better organization, reuse of modules, and incremental changes to the design without affecting the entire system. Flat synthesis, on the other hand, treats the entire design as a single, monolithic unit during the synthesis process and regardless of any hierarchical relations, it is synthesized into a single netlist. Flat synthesis can be useful for optimizing certain designs but it becomes challenging to maintain, analyze, and modify the design due to its lack of structural modularity.
+
+Consider the verilog file `multiple_modules.v` which is given in the verilog_files directory
+
+```
+module sub_module2 (input a, input b, output y);
+    assign y = a | b;
+endmodule
+
+module sub_module1 (input a, input b, output y);
+    assign y = a&b;
+endmodule
+
+
+module multiple_modules (input a, input b, input c , output y);
+    wire net1;
+    sub_module1 u1(.a(a),.b(b),.y(net1));  //net1 = a&b
+    sub_module2 u2(.a(net1),.b(c),.y(y));  //y = net1|c ,ie y = a&b + c;
+endmodule
+```
+
+To perform **hierarchical synthesis** on the `multiple_modules.v` file type the following commands:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_modules.v
+synth -top multiple_modules
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show multiple_modules
+write_verilog -noattr multiple_modules_hier.v
+```
+
+The following statistics are displayed:
+
+![Screenshot from 2024-10-21 16-12-48](https://github.com/user-attachments/assets/3631463b-dd45-4e5b-962c-1c0e22b30e8f)
+
+![Screenshot from 2024-10-21 16-19-10](https://github.com/user-attachments/assets/35b29151-fd13-4f54-a630-892c4684a00d)
 
 
 
