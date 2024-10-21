@@ -866,6 +866,99 @@ Netlist code:
 
 
 
+### Day 3: Combinational and sequential optimizations
+
+There are two types of optimisations: Combinational and Sequential optimisations. These optimisations are done inorder to achieve designs that are efficient in terms of area, power, and performance.
+
+**Combinational Optimization**
+
+The techiniques used are:
+
+- Constant Propagation (Direct Optimisation)
+- Boolean Logic Optimisation (using K-Map or Quine McCluskey method)
+
+**Constant Propagation:**
+
+Consider the below circuit:
+
+![image](https://github.com/user-attachments/assets/24fcec7b-7b46-4d73-b93d-a257883ef6e5)
+
+The top circuit uses 6 transistors(3 nmos and 3 pmos). The bottom cicuit uses 2 transistors(1 nmos and 1 pmos) when we make A zero as the logic becomes invertor. 
+
+**Boolean Logic Optimisation:**
+
+Consider the below verilog code:
+
+`assign y = a?(b?c:(c?a:0)):(!c);`
+
+The ternary operator (?:) will realize a mux 
+
+**Example 1:**
+
+Verllog code:
+
+```
+module opt_check (input a , input b , output y);
+	assign y = a?b:0;
+endmodule
+```
+
+The above code infers a multiplexer and since one of the inputs of the multiplexer is always connected to the ground it will infer an AND gate on optimisation.
+
+Run the below code for netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check.v
+synth -top opt_check
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr opt_check_net.v
+```
+
+
+![Screenshot from 2024-10-21 21-20-18](https://github.com/user-attachments/assets/420b16cc-51d4-4f1d-ad29-d04f6f7df92c)
+
+Netlist
+
+![Screenshot from 2024-10-21 21-22-55](https://github.com/user-attachments/assets/75117042-f0d9-4d2c-8987-9c92821de15e)
+
+![Screenshot from 2024-10-21 21-25-36](https://github.com/user-attachments/assets/b4022cb3-71db-430d-a47c-c3ff2119c098)
+
+**Example 2:**
+
+Verllog code:
+
+```
+module opt_check2 (input a , input b , output y);
+	assign y = a?1:b;
+endmodule
+```
+
+Since one of the inputs of the multiplexer is always connected to the logic 1 it will infer an OR gate on optimisation.The OR gate will be NAND implementation since NOR gate has stacked pmos while NAND implementation has stacked nmos.
+
+Run the below code for netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check2.v
+synth -top opt_check2
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr opt_check2_net.v
+```
+
+![Screenshot from 2024-10-21 21-32-58](https://github.com/user-attachments/assets/bb4b2e65-5fa0-467d-b497-69a89d39fa30)
+
+Netlist
+
+![Screenshot from 2024-10-21 21-34-24](https://github.com/user-attachments/assets/aaf256dc-dbb4-41f7-9509-f3ae8f6b8d1f)
+
+
 
 
 
