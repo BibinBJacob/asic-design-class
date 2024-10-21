@@ -1415,5 +1415,82 @@ iverilog counter_opt.v tb_counter_opt.v
 ./a.out
 gtkwave tb_counter_opt.vcd
 ```
+![Screenshot from 2024-10-21 23-57-08](https://github.com/user-attachments/assets/fb6c6cdd-d9e2-41c3-a37c-c0d59bb2d75e)
+
+Modified counter logic:
+
+Verilog code:
+
+```
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = {count[2:0]==3'b100};
+always @(posedge clk ,posedge reset)
+begin
+if(reset)
+	count <= 3'b000;
+else
+	count <= count + 1;
+end
+endmodule
+```
+Run the below code for netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog counter_opt.v
+synth -top counter_opt
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr counter_opt_net.v
+```
+![Screenshot from 2024-10-21 23-59-14](https://github.com/user-attachments/assets/e0ca8f6b-cea1-4502-a2e9-835cca7e0c51)
+
+netlist
+![Screenshot from 2024-10-22 00-00-58](https://github.com/user-attachments/assets/09b02bbd-dd98-44fa-857e-47874a0aa8ac)
+
+![Screenshot from 2024-10-22 00-02-31](https://github.com/user-attachments/assets/b54c1f9a-2655-46ff-aa57-fd3bd6a8303a)
+
+GTKWave Output:
+
+```
+iverilog counter_opt.v tb_counter_opt.v
+./a.out
+gtkwave tb_counter_opt.vcd
+```
+![Screenshot from 2024-10-22 00-05-11](https://github.com/user-attachments/assets/30ad2aef-1e2e-476f-befa-c75b5b35ec02)
+
+### Day 4: GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+
+Gate Level Simulation (GLS) is a crucial step in the verification process of digital circuits. It involves simulating the synthesized netlist, which is a lower-level representation of the design, using a testbench to verify its logical correctness and timing behavior. By comparing the simulated outputs to the expected outputs, GLS ensures that the synthesis process has not introduced any errors and that the design meets its performance requirements.
+
+![image](https://github.com/user-attachments/assets/fa59f230-4a0d-4c8e-9353-a01a9209a6d6)
+
+Sensitivity lists are crucial for accurate circuit behavior. If a sensitivity list is incomplete, it can lead to unexpected latches. Blocking and non-blocking assignments within always blocks have different execution behaviors. Incorrect use of blocking assignments can unintentionally create latches, causing synthesis and simulation mismatches. To avoid these issues, it's essential to carefully analyze circuit behavior and ensure that the sensitivity list and assignments align with the desired functionality.
+
+**GLS Simulation**
+
+**Example 1:**
+
+Verilog code:
+
+```
+module ternary_operator_mux (input i0 , input i1 , input sel , output y);
+assign y = sel?i1:i0;
+endmodule
+```
+
+Simulation:
+
+```
+iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+
+
+
 
 
