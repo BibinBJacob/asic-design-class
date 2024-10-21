@@ -541,9 +541,20 @@ write_verilog -noattr good_mux_netlist.v
 ## Day 2: Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
 Run the below commands to view the contents inside the .lib file:
+```
+cd ASIC/sky130RTLDesignAndSynthesisWorkshop/lib/
+vim sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+![Screenshot from 2024-10-21 15-00-34](https://github.com/user-attachments/assets/b7f138bb-2edb-4fa1-8b7f-d74346c79a32)
 
-```
-```
+
+The liberty(.lib) files store PVT parameters (Process, Voltage, Temperature). Variations in these parameters can significantly affect circuit performance. Manufacturing variations, voltage fluctuations, and temperature changes all contribute to this impact."
+
+We can also find different versions of the same cell. For example, consider the AND gate
+![Screenshot from 2024-10-21 15-33-54](https://github.com/user-attachments/assets/5736b89e-3611-45fd-bb68-f25eab84a1bc)
+![Screenshot from 2024-10-21 15-33-46](https://github.com/user-attachments/assets/a4a6b15e-8754-4f2a-aaba-5bc36aaf89ec)
+![Screenshot from 2024-10-21 15-33-36](https://github.com/user-attachments/assets/cd377b49-8d5f-49e7-9f89-b3048157bbb0)
+
 
 
 
