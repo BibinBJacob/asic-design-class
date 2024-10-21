@@ -1575,4 +1575,56 @@ gtkwave tb_bad_mux.vcd
 ```
 ![Screenshot from 2024-10-22 00-31-22](https://github.com/user-attachments/assets/d32cb807-b23d-42cb-8a39-912148e8bb16)
 
+In this case there is a synthesis and simulation mismatch. While performing synthesis yosys has corrected the sensitivity list error.
 
+**Labs on Synthesis-Simulation mismatch for blocking statements**
+
+Verilog code:
+
+```
+module blocking_caveat (input a , input b , input  c, output reg d); 
+reg x;
+always @ (*)
+begin
+d = x & c;
+x = a | b;
+end
+endmodule
+```
+
+Simulation:
+
+```
+iverilog blocking_caveat.v tb_blocking_caveat.v
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
+![Screenshot from 2024-10-22 00-34-49](https://github.com/user-attachments/assets/587bbf84-d9e1-4e04-80f5-afdc1eeee36b)
+
+Netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog blocking_caveat.v
+synth -top blocking_caveat
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show
+write_verilog -noattr blocking_caveat_net.v
+```
+![Screenshot from 2024-10-22 00-37-48](https://github.com/user-attachments/assets/19ee1879-1548-4eb3-82f8-1b5306f2a1e0)
+netlist
+![Screenshot from 2024-10-22 00-39-01](https://github.com/user-attachments/assets/6231ace6-aeb2-4809-8c45-e011173329d2)
+
+![Screenshot from 2024-10-22 00-40-21](https://github.com/user-attachments/assets/0ea333fb-c285-44bf-82d2-7158125299f8)
+
+GLS:
+
+```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
+![Screenshot from 2024-10-22 00-41-29](https://github.com/user-attachments/assets/9dd8723d-b860-4265-b2ab-af58d0d496e5)
+
+In this case there is a synthesis and simulation mismatch. While performing synthesis yosys has corrected the latch error.
