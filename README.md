@@ -623,6 +623,166 @@ write_verilog -noattr multiple_modules_flat.v
 ```
 The following statistics are displayed:
 
+![Screenshot from 2024-10-21 18-20-53](https://github.com/user-attachments/assets/e20bb2a2-c735-45a7-8899-86e8c441ac80)
+
+Netlist
+
+![Screenshot from 2024-10-21 18-21-54](https://github.com/user-attachments/assets/367b89f1-99af-4084-9242-bc904888fa0c)
+
+To perform **sub module synthesis**. type the below commands:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog multiple_modules.v 
+synth -top sub_module
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show
+```
+
+
+The following statistics are displayed:
+
+![Screenshot from 2024-10-21 18-49-24](https://github.com/user-attachments/assets/3641ee73-89fd-476c-908b-2d95b20c180e)
+
+Netlist
+
+![Screenshot from 2024-10-21 18-49-45](https://github.com/user-attachments/assets/105f9371-806d-4909-86a9-17ca9bda6301)
+
+*Flip-Flop Coding Styles and Optimizations**
+
+Flip-Flops are an essential part of sequential logic in a circuit and here we explore the design and synthesis of various types of flip-flops. To prevent glitches in digital circuits, we use flip-flops to store intermediate values. This ensures that combinational circuit inputs remain stable until the clock edge, avoiding glitches and maintaining correct operation:
+
+**Asynchronous Reset Flip-flop:**
+
+Verilog Code:
+
+```
+module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
+always @ (posedge clk , posedge async_reset)
+begin
+	if(async_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+Run the below code to view the simulation:
+
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
+Waveform
+![Screenshot from 2024-10-21 19-09-04](https://github.com/user-attachments/assets/8cfe2f10-f8a3-4a7f-be02-4ddb127528dc)
+
+Run the below code to view the netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_asyncres.v
+synth -top dff_asyncres
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+Netlist:
+
+![image](https://github.com/user-attachments/assets/70d7f947-f0e6-4921-b143-5f7419cf3ef6)
+
+**Synchronous Reset Flip-flop:**
+
+Verilog Code:
+
+```
+module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+always @ (posedge clk )
+begin
+	if (sync_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+Run the below code to view the simulation:
+
+```
+iverilog dff_syncres.v tb_dff_syncres.v
+./a.out
+gtkwave tb_dff_syncres.vcd
+```
+
+Waveform:
+
+![image](https://github.com/user-attachments/assets/8b80edd0-efdb-4ca7-9e4c-7db904655d20)
+
+Run the below code to view the netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_syncres.v
+synth -top dff_syncres
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+Netlist:
+
+![image](https://github.com/user-attachments/assets/00399402-3299-4fa0-b672-0e97a2009683)
+
+**Asynchronous Set Flip-flop:**
+
+Verilog Code:
+
+```
+module dff_async_set ( input clk ,  input async_set , input d , output reg q );
+always @ (posedge clk , posedge async_set)
+begin
+	if(async_set)
+		q <= 1'b1;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+Run the below code to view the simulation:
+
+```
+iverilog dff_async_set.v tb_dff_async_set.v
+./a.out
+gtkwave tb_dff_async_set.vcd
+```
+
+Waveform:
+
+![image](https://github.com/user-attachments/assets/ec901aae-f8a9-4b23-8296-87dda912fc07)
+
+Run the below code to view the netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_async_set.v
+synth -top dff_async_set
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+Netlist:
+
+![image](https://github.com/user-attachments/assets/a6b6a03b-0b96-467b-9ad8-3367e746b676)
+
 
 
 
