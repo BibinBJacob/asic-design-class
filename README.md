@@ -1489,8 +1489,90 @@ iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
 ./a.out
 gtkwave tb_ternary_operator_mux.vcd
 ```
+![Screenshot from 2024-10-22 00-13-01](https://github.com/user-attachments/assets/2c536a59-4522-49f9-93f4-e886828a81ef)
 
+Netlist:
 
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog ternary_operator_mux.v
+synth -top ternary_operator_mux
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show
+write_verilog -noattr ternary_operator_mux_net.v
+```
 
+![Screenshot from 2024-10-22 00-16-52](https://github.com/user-attachments/assets/035681ac-6509-44b2-a39e-f2f653b09411)
+
+Netlist
+
+![Screenshot from 2024-10-22 00-17-39](https://github.com/user-attachments/assets/adf9bcba-9028-4763-b168-9b48b81e397e)
+
+![Screenshot from 2024-10-22 00-18-40](https://github.com/user-attachments/assets/04652c3b-d527-4437-aaa9-8fd1eecf5230)
+
+GLS:
+
+```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+
+![Screenshot from 2024-10-22 00-21-00](https://github.com/user-attachments/assets/2473a877-810f-4819-8485-afb26863f1f8)
+
+In this case there is no mismatch between the waveforms before and after synthesis
+
+**Example 2:**
+
+Verilog code:
+
+```
+module bad_mux (input i0 , input i1 , input sel , output reg y);
+always @ (sel)
+begin
+	if(sel)
+		y <= i1;
+	else 
+		y <= i0;
+end
+endmodule
+```
+
+Simulation:
+
+```
+iverilog bad_mux.v tb_bad_mux.v
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+![Screenshot from 2024-10-22 00-22-45](https://github.com/user-attachments/assets/dc6a625f-96df-4c65-bcb7-d1e5cea4093c)
+
+Netlist:
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog bad_mux.v
+synth -top bad_mux
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+show
+write_verilog -noattr bad_mux_net.v
+```
+![Screenshot from 2024-10-22 00-27-08](https://github.com/user-attachments/assets/b75dc4b2-483c-43f1-8fdd-6a93b0f2de6f)
+
+netlist
+![Screenshot from 2024-10-22 00-28-39](https://github.com/user-attachments/assets/9f74b69b-b2f3-4803-a9ff-a19eb220f879)
+
+![image](https://github.com/user-attachments/assets/93f06a14-81f9-4eb8-b2c5-4d87cf7a0ea6)
+
+GLS:
+
+```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+![Screenshot from 2024-10-22 00-31-22](https://github.com/user-attachments/assets/d32cb807-b23d-42cb-8a39-912148e8bb16)
 
 
