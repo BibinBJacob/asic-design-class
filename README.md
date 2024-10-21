@@ -852,14 +852,17 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 write_verilog -noattr mult_8_net.v
 ```
+![Screenshot from 2024-10-21 20-07-22](https://github.com/user-attachments/assets/4bafd265-529c-4394-8470-181feaf92424)
 
-![image](https://github.com/user-attachments/assets/dc7480c5-f8f9-4186-b655-408a9381cdd6)
+
 
 Netlist:
 
-![image](https://github.com/user-attachments/assets/495a4cdf-7c6e-42a7-abd9-9d538c691cf6)
+![Screenshot from 2024-10-21 20-09-55](https://github.com/user-attachments/assets/294dc01f-a363-4cbf-a002-520fd6c1a934)
 
+Netlist code: 
 
+![image](https://github.com/user-attachments/assets/6917d5ef-b1bf-4f0d-9ea1-8c794a2f1bf8)
 
 
 
