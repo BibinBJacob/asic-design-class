@@ -1652,6 +1652,6 @@ In this case there is a synthesis and simulation mismatch. While performing synt
 ![Screenshot from 2024-10-24 18-34-55](https://github.com/user-attachments/assets/6abf9567-6b81-48e0-b534-e86d6e8478a2)
 
 
-### O1=02 The pre synthesis simulation waveforms and the post synthesis simulation waveforms were found to be identical.
+### O1= O2 The pre synthesis simulation waveforms and the post synthesis simulation waveforms were found to be identical.
 
 
