@@ -1628,3 +1628,30 @@ gtkwave tb_blocking_caveat.vcd
 ![Screenshot from 2024-10-22 00-41-29](https://github.com/user-attachments/assets/9dd8723d-b860-4265-b2ab-af58d0d496e5)
 
 In this case there is a synthesis and simulation mismatch. While performing synthesis yosys has corrected the latch error.
+
+### Task 11 : RISC-V Synthesis for Gate-Level Simulation of BabySoC:
+
+## O1 result of Presynthesis
+
+### Terminal
+![Screenshot from 2024-10-24 18-10-24](https://github.com/user-attachments/assets/79d54ae0-533b-40ff-9c6f-0a68cc614e9b)
+
+
+### Waveform
+
+![Screenshot from 2024-10-24 17-41-25](https://github.com/user-attachments/assets/5159ff68-55b2-4282-a4bc-33164d1c6c20)
+
+## O2 result of Postsynthesis
+
+###Terminal
+
+![Screenshot from 2024-10-24 18-13-37](https://github.com/user-attachments/assets/8a005f70-b61b-4674-bda5-09bb090d17b2)
+
+### Waveform
+
+![Screenshot from 2024-10-24 18-34-55](https://github.com/user-attachments/assets/6abf9567-6b81-48e0-b534-e86d6e8478a2)
+
+
+### O1=02 The pre synthesis simulation waveforms and the post synthesis simulation waveforms were found to be identical.
+
+
