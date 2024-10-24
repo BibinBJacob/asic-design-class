@@ -1643,7 +1643,7 @@ In this case there is a synthesis and simulation mismatch. While performing synt
 
 ## O2 result of Postsynthesis
 
-###Terminal
+### Terminal
 
 ![Screenshot from 2024-10-24 18-13-37](https://github.com/user-attachments/assets/8a005f70-b61b-4674-bda5-09bb090d17b2)
 
