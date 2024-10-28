@@ -1654,4 +1654,76 @@ In this case there is a synthesis and simulation mismatch. While performing synt
 
 ### O1= O2 The pre synthesis simulation waveforms and the post synthesis simulation waveforms were found to be identical.
 
+# Lab 11 -  Static Timing Analysis for a Synthesized RISC-V Core with OpenSTA 
+
+### Static time analysis  
+Static Timing Analysis (STA) verifies the timing performance of a digital circuit without dynamic simulation, checking if it meets timing constraints by analyzing timing paths. STA evaluates paths from input to output, considering delays of gates and interconnects. It checks for setup and hold time violations, ensuring data stability before and after clock edges. STA also incorporates clock definitions, including frequency and variations like skew or jitter, and assumes worst-case conditions for delays to ensure circuit performance under all conditions. Tools like Synopsys PrimeTime and Cadence Tempus automate this process, identifying timing issues early to ensure reliable circuit operation at intended speeds. STA is crucial for several reasons in digital circuit design. It verifies that data signals can propagate within required time limits, ensuring stable and valid outputs. It helps identify timing violations, ensuring reliable operation of flip-flops and sequential elements. STA allows designers to optimize performance by identifying and improving critical paths that limit the circuit's maximum operating frequency. It enables early detection of timing issues, reducing costly revisions later. STA also helps balance performance and power efficiency by analyzing the impact of clock frequency on power consumption. Automated STA tools efficiently analyze complex designs, incorporating variations in manufacturing, temperature, and voltage to ensure robust performance.  
+
+### Reg2Reg Path   
+A reg2reg path connects two sequential elements, like flip-flops, in a digital circuit. This path is essential in STA for verifying data flow from one register to another through combinational logic. Reg2reg paths ensure proper data flow and synchronization, especially in designs with pipelining or sequential operations. They are analyzed for setup and hold time constraints, ensuring data stability at the registers. Timing analysis includes delays through combinational logic connecting the registers. Critical reg2reg paths limit the circuit's maximum operating frequency, requiring optimization. If registers belong to different clock domains, additional considerations for metastability and synchronization are needed.  
+
+### Clk2Reg Path    
+A clk2reg path connects the clock signal to a register in a digital circuit, ensuring the register operates correctly in response to clock events. This path represents the time it takes for the clock signal to reach the register from the clock source, including delays from clock buffers or routing. In setup timing analysis, it determines when data must arrive at the register relative to the clock edge. Clock delay through distribution elements impacts the timing of data capture at the register. While primarily for setup time analysis, clk2reg paths also consider hold time, especially with clock jitter or variations. Analysis includes considerations for synchronization in different clock domains.   
+
+### STA for synthesized Risc-V core using time period of 10.05 seconds  
+In this task, we'll generate setup and hold timing reports for our synthesized RISC-V Core module. These reports are essential for verifying that the circuit meets its timing constraints, ensuring data signals propagate correctly through the core  
+
+
+## Tools Installation
+**CUDD**
+
+```
+cd
+tar xvfz cudd-3.0.0.tar.gz
+cd cudd-3.0.0
+./configure
+make
+```
+**openSTA**
+```
+cd
+sudo apt-get install cmake clang gcc tcl swig bison flex
+
+git clone https://github.com/parallaxsw/OpenSTA.git
+cd OpenSTA
+cmake -DCUDD_DIR=/home/bibin-b-jacob/cudd-3.0.0
+make
+app/sta
+```
+
+![Screenshot from 2024-10-29 00-31-59](https://github.com/user-attachments/assets/5d3e939b-bff4-498f-a723-6c494ec52556)
+
+**Steps to do Timing Analysis**
+- Clock period = 10.05ns
+- Setup uncertainty and clock transition will be 5% of clock
+- Hold uncertainty and data transition will be 8% of clock. 
+
+```
+cd /home/bibin-b-jacob/OpenSTA/app
+./sta
+
+read_liberty /home/bibin-b-jacob/OpenSTA/Directory/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog /home/bibin-b-jacob/OpenSTA/Directory/bibin_riscv_netlist.v
+link_design rvmyth
+
+create_clock -name clk -period 10.05 [get_ports clk]
+set_clock_uncertainty [expr 0.05 * 10.05] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * 10.05] -hold [get_clocks clk]
+set_clock_transition [expr 0.05 * 10.05] [get_clocks clk]
+set_input_transition [expr 0.08 * 10.05] [all_inputs]
+
+report_checks -path_delay max
+report_checks -path_delay min
+
+```
+![Screenshot from 2024-10-29 00-37-51](https://github.com/user-attachments/assets/549d259b-dfda-42c7-b962-44651d52e46f)
+
+
+![Screenshot from 2024-10-29 00-39-02](https://github.com/user-attachments/assets/5cae14aa-c576-4810-8f71-4092c8ccfd72)
+
+
+
+
+
+
 
