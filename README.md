@@ -1721,7 +1721,7 @@ report_checks -path_delay min
 
 ![Screenshot from 2024-10-29 00-39-02](https://github.com/user-attachments/assets/5cae14aa-c576-4810-8f71-4092c8ccfd72)
 
-# Lab 12 - Perform Static Timing Analysis on the synthesized RISC-V netlist from Laboratory 10, using different PVT files. 
+# Lab 12 - Perform Static Timing Analysis on the synthesized RISC-V netlistusing different PVT files. 
 
 ### vsdbabysoc_synthesis.sdc
 - Clock period = 10.05ns
@@ -1826,6 +1826,7 @@ cd OpenSTA/app
 ./sta
 source /home/bibin-b-jacob/OpenSTA/lab/sta.tcl
 ```
+![Screenshot from 2024-11-05 19-03-30](https://github.com/user-attachments/assets/1048beea-9edc-4221-b340-4f62504e7abe)
 
 | Library File                          |         TNS         |         WNS         |     Worst Max Slack (or) Worst Setup Slack    |     Worst Min Slack (or) Worst Hold Slack     |
 |---------------------------------------|:-------------------:|:-------------------:|:----------------------:|:-------------------------:|
