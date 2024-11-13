@@ -1898,5 +1898,72 @@ exit
 
 Screenshots of running each commands
 
+![1](https://github.com/user-attachments/assets/7b2c3332-1307-42f4-98f4-b2e6a26f7069)
+
+![2](https://github.com/user-attachments/assets/47f487c0-3bdb-4f4d-ba2b-52d6ce938345)
+
+![3](https://github.com/user-attachments/assets/34ad6ed5-8987-4ee1-a238-2c79ec132bd9)
+
+Calculating flop ratio
+
+![4](https://github.com/user-attachments/assets/6f4f0056-8eb0-4403-bc64-ab7e5069b4da)
+
+Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
+```math
+Flop\ Ratio = \frac{1634}{19119} = 0.0854
+```
+```math
+Percentage\ of\ DFF's = 0.0854 * 100 = 8.54\ \%
+```
+## Day 2
+
+
+1. Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
+2. Calculate the die area in microns from the values in floorplan def.
+3. Load generated floorplan def in magic tool and explore the floorplan.
+4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+5. Load generated placement def in magic tool and explore the placement.
+
+```math
+Area\ of\ die\ in\ microns = Die\ width\ in\ microns * Die\ height\ in\ microns
+```
+
+#### 1. Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
+
+Commands to invoke the OpenLANE flow and perform floorplan
+
+```bash
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+```
+```tcl
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+# Now we can run floorplan
+run_floorplan
+```
+
+Screenshot of floorplan run
+![1](https://github.com/user-attachments/assets/6b49ff2e-9e2e-4dbb-b053-530a2de88f7c)
+
+![2](https://github.com/user-attachments/assets/bba93340-29bd-43e8-8c71-8b4f7741a1cb)
+
+![3](https://github.com/user-attachments/assets/5268d547-293d-499c-862d-dd74ed0efbc9)
+
 
 
