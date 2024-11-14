@@ -2022,6 +2022,7 @@ Clone custom inverter standard cell design from github repository
 
  Load the custom inverter layout in magic and explore.
 
-![2](https://github.com/user-attachments/assets/f09411f8-d87c-4698-8094-81d82ed8c191)
+![2](https://github.com/user-attachments/assets/5f8cb896-f646-4470-9c6c-84cb5ed1d369)
+
 
 
