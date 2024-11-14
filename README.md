@@ -2024,5 +2024,26 @@ Clone custom inverter standard cell design from github repository
 
 ![2](https://github.com/user-attachments/assets/5f8cb896-f646-4470-9c6c-84cb5ed1d369)
 
+Output Y connectivity to PMOS and NMOS drain verified
+
+![3](https://github.com/user-attachments/assets/c125f3de-84a1-4f7c-b70e-b4a2fbb63f51)
+
+NMOS source connectivity to VSS (here VGND) verified
+
+![4](https://github.com/user-attachments/assets/202f8cd8-29b8-41f7-ae7d-ae1604f96697)
+
+Deleting necessary layout part to see DRC error
+
+![5](https://github.com/user-attachments/assets/94371c18-1572-474b-990d-8b65f6084ff8)
+
+Spice extraction of inverter in magic.
+
+![8](https://github.com/user-attachments/assets/b087c448-49ab-40f0-ad05-fc2508641f90)
+
+Final edited spice file ready for ngspice simulation
+
+![10](https://github.com/user-attachments/assets/f08fc8d1-ec66-41a2-a871-397ba41a1895)
+
+Post-layout ngspice simulations.
 
 
