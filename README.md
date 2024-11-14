@@ -1959,11 +1959,69 @@ run_floorplan
 ```
 
 Screenshot of floorplan run
+
 ![1](https://github.com/user-attachments/assets/6b49ff2e-9e2e-4dbb-b053-530a2de88f7c)
 
 ![2](https://github.com/user-attachments/assets/bba93340-29bd-43e8-8c71-8b4f7741a1cb)
 
+Calculate the die area in microns from the values in floorplan def.
+
 ![3](https://github.com/user-attachments/assets/5268d547-293d-499c-862d-dd74ed0efbc9)
 
+According to floorplan def
+```math
+1000\ Unit\ Distance = 1\ Micron
+```
+```math
+Die\ width\ in\ unit\ distance = 660685 - 0 = 660685
+```
+```math
+Die\ height\ in\ unit\ distance = 671405 - 0 = 671405
+```
+```math
+Distance\ in\ microns = \frac{Value\ in\ Unit\ Distance}{1000}
+```
+```math
+Die\ width\ in\ microns = \frac{660685}{1000} = 660.685\ Microns
+```
+```math
+Die\ height\ in\ microns = \frac{671405}{1000} = 671.405\ Microns
+```
+```math
+Area\ of\ die\ in\ microns = 660.685 * 671.405 = 443587.212425\ Square\ Microns
+```
+Load generated floorplan def in magic tool and explore the floorplan.
+
+![4](https://github.com/user-attachments/assets/5102aff5-6cfc-407d-8d86-666675e45f9c)
+
+![5](https://github.com/user-attachments/assets/5c5e482c-dfe6-4af9-b9d7-3828f33620f6)
+
+Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+
+Command to run placement
+
+```tcl
+# Congestion aware placement by default
+run_placement
+```
+![6](https://github.com/user-attachments/assets/0f25c047-b8fe-4ce9-81f9-c93fedd3f2af)
+
+Load generated placement def in magic tool and explore the placement.
+
+![7](https://github.com/user-attachments/assets/4c3e3b4f-8047-4e44-90c9-34cb8f63a200)
+
+Standard cells legally placed
+
+![8](https://github.com/user-attachments/assets/73a2e5d9-a20a-4c6f-8f2f-0ba2db92c2b1)
+
+# Day 3
+
+Clone custom inverter standard cell design from github repository
+
+![1](https://github.com/user-attachments/assets/0ce37f66-d172-40d0-9092-29d4a29647de)
+
+ Load the custom inverter layout in magic and explore.
+
+![2](https://github.com/user-attachments/assets/f09411f8-d87c-4698-8094-81d82ed8c191)
 
 
