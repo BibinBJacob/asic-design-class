@@ -2362,3 +2362,76 @@ Screenshots of commands run
 
 ![12](https://github.com/user-attachments/assets/eeab2481-6b0e-4139-af09-27d0b0c5bfc1)
 
+Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+
+Noting down current design values generated before modifying parameters to improve timing
+
+![12](https://github.com/user-attachments/assets/eeab2481-6b0e-4139-af09-27d0b0c5bfc1)
+
+Commands to view and change parameters to improve timing and run synthesis
+
+```tcl
+# Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 15-11_03-56 -overwrite
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+![13](https://github.com/user-attachments/assets/8bfc49d3-628a-41c6-ab44-108ba880fa75)
+
+![14](https://github.com/user-attachments/assets/3bbbb5be-2985-4f98-bad1-3ad8b2d1174e)
+
+![15](https://github.com/user-attachments/assets/c79a579b-ace8-4eef-aee4-eec09df6a841)
+
+
+Comparing to previously noted run values  worst negative slack has become 0
+
+Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+
+Now that our custom inverter is properly accepted in synthesis we can now run floorplan using following command
+
+```tcl
+# Follwing commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+```
+
+![16](https://github.com/user-attachments/assets/9b77893c-3d42-4f18-96de-a4ab25cf2e4f)
+
+![17](https://github.com/user-attachments/assets/3449d8a3-fbed-40e2-8a9b-7078e1b83de6)
+
+Now that floorplan is done we can do placement using following command
+
+```tcl
+# Now we are ready to run placement
+run_placement
+```
+![18](https://github.com/user-attachments/assets/756bc54a-0b84-4520-a2d0-4ae3d09a49ab)
+
+![19](https://github.com/user-attachments/assets/4de413b4-056e-4085-ab70-442b39cbf7a2)
+
+
+
