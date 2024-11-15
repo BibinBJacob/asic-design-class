@@ -2472,4 +2472,9 @@ run_synthesis
 
 ![24](https://github.com/user-attachments/assets/1a1fdaaa-b079-4d1d-bb74-502f25397522)
 
+![25](https://github.com/user-attachments/assets/8fa01213-230b-4487-a6c4-eb2fca1bd875)
+
+Newly created pre_sta.conf for STA analysis in openlane directory
+
+
 
