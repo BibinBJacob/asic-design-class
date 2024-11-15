@@ -2046,4 +2046,86 @@ Final edited spice file ready for ngspice simulation
 
 Post-layout ngspice simulations.
 
+![11](https://github.com/user-attachments/assets/d96523d9-6944-40a2-ad82-f61d2a0cf9d6)
 
+![12](https://github.com/user-attachments/assets/d451f6d7-0810-44a6-a2c9-05d932ec8f65)
+
+Screenshot of generated plot
+
+![13](https://github.com/user-attachments/assets/74e861b1-8dec-451f-b251-462e081845d7)
+
+Rise transition time calculation
+
+```math
+Rise\ transition\ time = Time\ taken\ for\ output\ to\ rise\ to\ 80\% - Time\ taken\ for\ output\ to\ rise\ to\ 20\%
+```
+```math
+20\%\ of\ output = 660\ mV
+```
+```math
+80\%\ of\ output = 2.64\ V
+```
+
+20% Screenshots
+
+![14](https://github.com/user-attachments/assets/cb992d7d-885e-4a17-a057-129e50112461)
+
+![15](https://github.com/user-attachments/assets/eda7f6bc-9728-4f0c-8e76-2676b22b779c)
+
+80% Screenshots
+
+![16](https://github.com/user-attachments/assets/c47409c5-6680-4ed7-ba56-6ace5daa61a5)
+
+![17](https://github.com/user-attachments/assets/9540a801-0c9d-460d-8b59-6e5e685f2bc6)
+
+```math
+Rise\ transition\ time = 2.24638 - 2.18242 = 0.06396\ ns = 63.96\ ps
+```
+Fall transition time calculation
+
+```math
+Fall\ transition\ time = Time\ taken\ for\ output\ to\ fall\ to\ 20\% - Time\ taken\ for\ output\ to\ fall\ to\ 80\%
+```
+```math
+20\%\ of\ output = 660\ mV
+```
+```math
+80\%\ of\ output = 2.64\ V
+```
+Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+Link to Sky130 Periphery rules: [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html)
+
+Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
+
+```bash
+# Change to home directory
+cd
+
+# Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Since lab file is compressed command to extract it
+tar xfz drc_tests.tgz
+
+# Change directory into the lab folder
+cd drc_tests
+
+# List all files and directories present in the current directory
+ls -al
+
+# Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+```
+Screenshots of commands run
+
+![18](https://github.com/user-attachments/assets/4fc53c20-8138-426d-aa96-e61391f30146)
+
+![19](https://github.com/user-attachments/assets/3592b8dc-844d-4079-b420-54acc2655287)
+
+Screenshot of .magicrc file
+
+![20](https://github.com/user-attachments/assets/2f8988e8-2b68-4699-a11b-37c80d13f61e)
