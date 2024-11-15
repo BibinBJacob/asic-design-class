@@ -2433,5 +2433,43 @@ run_placement
 
 ![19](https://github.com/user-attachments/assets/4de413b4-056e-4085-ab70-442b39cbf7a2)
 
+Screenshot of placement def in magic
+
+![20](https://github.com/user-attachments/assets/05918152-735e-48ed-bebc-6552da494189)
+
+![21](https://github.com/user-attachments/assets/d83c6a49-faf9-44f6-8308-47e0da588539)
+
+![22](https://github.com/user-attachments/assets/35206639-5402-458b-b9b8-b6f5c91a4045
+
+Do Post-Synthesis timing analysis with OpenSTA tool.
+
+Since we are having 0 wns after improved timing run we are going to do timing analysis on initial run of synthesis which has lots of violations and no parameters were added to improve timing
+
+Commands to invoke the OpenLANE flow include new lef and perform synthesis 
+docker
+```
+```tcl
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+![23](https://github.com/user-attachments/assets/4a559e60-1ad3-4a9a-bb5f-1df070695bc0)
+
+![24](https://github.com/user-attachments/assets/1a1fdaaa-b079-4d1d-bb74-502f25397522)
 
 
