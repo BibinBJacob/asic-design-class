@@ -2872,3 +2872,120 @@ Screenshots of commands run and timing report generated
 ![67a](https://github.com/user-attachments/assets/07dc0f36-eb17-44de-b9da-85ab7ad5889b)
 
 ![68a](https://github.com/user-attachments/assets/1cf585dd-c119-4dd2-b3be-e3172dea4dae)
+
+# Day 5
+Final steps for RTL2GDS using tritonRoute and openSTA
+Perform generation of Power Distribution Network (PDN) and explore the PDN layout.
+
+Commands to perform all necessary stages up until now
+
+```bash
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+```
+```tcl
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+# Following commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+
+# Now we are ready to run placement
+run_placement
+
+# Incase getting error
+unset ::env(LIB_CTS)
+
+# With placement done we are now ready to run CTS
+run_cts
+
+# Now that CTS is done we can do power distribution network
+gen_pdn 
+```
+![1](https://github.com/user-attachments/assets/9d5ede8f-2bdd-4fbf-a1e6-a7dd18875f7d)
+
+![2](https://github.com/user-attachments/assets/db7e4c79-8dd9-43b9-b324-11c01145289f)
+
+Commands to load PDN def in magic in another terminal
+
+```bash
+# Change directory to path containing generated PDN def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_09-23/tmp/floorplan/
+
+# Command to load the PDN def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+```
+![4](https://github.com/user-attachments/assets/4c0dfa7d-b445-4f64-b713-19cf2227a121)
+
+
+![3](https://github.com/user-attachments/assets/e539573f-c0f0-400a-92a2-3ea7054ffa3b)
+
+![5](https://github.com/user-attachments/assets/9d4d942f-a03e-4922-aec0-69709a041aac)
+
+![6](https://github.com/user-attachments/assets/e6fe15a6-b174-4dd7-9736-25c0a077c0ed)
+
+
+Perfrom detailed routing using TritonRoute and explore the routed layout.
+
+Command to perform routing
+
+```tcl
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
+
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+```
+![7](https://github.com/user-attachments/assets/4a01e2d2-80f8-48a6-9e1f-56285b2b32c8)
+
+![8](https://github.com/user-attachments/assets/4222858a-ac4a-4410-ac68-21163538c0bf)
+
+![9](https://github.com/user-attachments/assets/ace3bc30-0948-42aa-a792-2c2d5782ba12)
+
+![10](https://github.com/user-attachments/assets/b243537b-1775-4997-975c-91a12da10e84)
+
+![11](https://github.com/user-attachments/assets/895c53c3-e9bc-4117-8bd3-e0adef80d4e5)
+
+![12](https://github.com/user-attachments/assets/b907f11c-4f09-4d71-9833-465652866eed)
+
+Commands to load routed def in magic in another terminal
+
+```bash
+# Change directory to path containing routed def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_09-23/results/routing/
+
+# Command to load the routed def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
+![14](https://github.com/user-attachments/assets/8c012e06-b917-45bd-a199-9e415abe5051)
+
+![13](https://github.com/user-attachments/assets/79a5bc9d-7cbe-4987-8b75-5b4b5eac5897)
+
