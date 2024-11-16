@@ -2439,7 +2439,7 @@ Screenshot of placement def in magic
 
 ![21](https://github.com/user-attachments/assets/d83c6a49-faf9-44f6-8308-47e0da588539)
 
-![22](https://github.com/user-attachments/assets/35206639-5402-458b-b9b8-b6f5c91a4045
+![22](https://github.com/user-attachments/assets/35206639-5402-458b-b9b8-b6f5c91a4045)
 
 Do Post-Synthesis timing analysis with OpenSTA tool.
 
@@ -2472,9 +2472,172 @@ run_synthesis
 
 ![24](https://github.com/user-attachments/assets/1a1fdaaa-b079-4d1d-bb74-502f25397522)
 
-![25](https://github.com/user-attachments/assets/8fa01213-230b-4487-a6c4-eb2fca1bd875)
+![30a](https://github.com/user-attachments/assets/a4b644bb-2c0b-4363-b7b3-9c66c701450d)
+
 
 Newly created pre_sta.conf for STA analysis in openlane directory
 
+![31a](https://github.com/user-attachments/assets/4b81d7c3-117a-4114-a246-c12d4b4dce49)
+
+Newly created `my_base.sdc` for STA analysis in `openlane/designs/picorv32a/src` directory based on the file `openlane/scripts/base.sdc`
+
+![34a](https://github.com/user-attachments/assets/a3989dbc-f9ee-47de-9fc6-228b83e7bcec)
+
+
+Commands to run STA in another terminal
+
+```bash
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+![32a](https://github.com/user-attachments/assets/45835de2-b250-4836-ae08-a99f11994f1b)
+
+![33a](https://github.com/user-attachments/assets/b9112b9a-aa5c-4acb-807f-aba8b55ef9b2)
+
+Since more fanout is causing more delay we can add parameter to reduce fanout and do synthesis again
+
+Commands to include new lef and perform synthesis 
+
+```tcl
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a -tag 16-11_00-58 -overwrite
+
+# Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to set new value for SYNTH_MAX_FANOUT
+set ::env(SYNTH_MAX_FANOUT) 4
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+
+![36a](https://github.com/user-attachments/assets/28641c2a-f4e1-4a8e-9102-4f9cbd823be4)
+
+Commands to run STA in another terminal
+
+```bash
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+![37a](https://github.com/user-attachments/assets/9d5a1b4e-ebb5-4f28-bcbe-91489139e4cf)
+
+Make timing ECO fixes to remove all violations.
+
+OR gate of drive strength 2 is driving 4 fanouts
+
+![38a](https://github.com/user-attachments/assets/7a1bfb6c-d69a-4a55-a729-52d13ad51c3e)
+
+Commands to perform analysis and optimize timing by replacing with OR gate of drive strength 4
+
+```tcl
+# Reports all the connections to a net
+report_net -connections _11672_
+
+# Checking command syntax
+help replace_cell
+
+# Replacing cell
+replace_cell _14510_ sky130_fd_sc_hd__or3_4
+
+# Generating custom timing report
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+Result - slack reduced
+
+![39a](https://github.com/user-attachments/assets/50f4f9cd-65a5-4aef-aa2a-3d05ab9fa759)
+
+![40a](https://github.com/user-attachments/assets/5279bfad-be28-410c-8bda-9b01518659ac)
+
+OR gate of drive strength 2 is driving 4 fanouts
+
+![41a](https://github.com/user-attachments/assets/b08d3a0a-b578-427b-8d6e-4ecf3b736ecd)
+
+Commands to perform analysis and optimize timing by replacing with OR gate of drive strength 4
+
+```tcl
+# Reports all the connections to a net
+report_net -connections _11675_
+
+# Replacing cell
+replace_cell _14514_ sky130_fd_sc_hd__or3_4
+
+# Generating custom timing report
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+![42a](https://github.com/user-attachments/assets/c64567ed-1638-4015-9425-fff8d537f54d)
+
+![43a](https://github.com/user-attachments/assets/3c0b4530-4169-4ace-b4c5-3b473fd3c819)
+
+OR gate of drive strength 2 driving OA gate has more delay
+
+![44a](https://github.com/user-attachments/assets/2d700afb-9263-40d6-9f9d-ee5dc25a955b)
+
+Commands to perform analysis and optimize timing by replacing with OR gate of drive strength 4
+
+```tcl
+# Reports all the connections to a net
+report_net -connections _11668_
+
+# Replacing cell
+replace_cell _14506_ sky130_fd_sc_hd__or4_4
+
+# Generating custom timing report
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+Result - slack reduced
+
+![45a](https://github.com/user-attachments/assets/78c760c2-e35e-489e-8619-3774879c74d7)
+
+![46a](https://github.com/user-attachments/assets/d5ebcaa3-3d91-4f54-84be-215d5505f629)
+
+OR gate of drive strength 2 driving OA gate has more delay
+
+![47a](https://github.com/user-attachments/assets/535b2db3-2416-4d7a-8fa9-a4e9169fe71b)
+
+Commands to perform analysis and optimize timing by replacing with OR gate of drive strength 4
+
+```tcl
+# Reports all the connections to a net
+report_net -connections _11668_
+
+# Replacing cell
+replace_cell _14506_ sky130_fd_sc_hd__or4_4
+
+# Generating custom timing report
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+Result - slack reduced
+
+![48a](https://github.com/user-attachments/assets/142edd30-1b63-425c-938d-e3af79090d90)
+
+![49a](https://github.com/user-attachments/assets/dfb1083e-ef1d-47e6-91ba-b5e28d60a7dd)
+
+Commands to verify instance `_14506_`  is replaced with `sky130_fd_sc_hd__or4_4`
+
+```tcl
+# Generating custom timing report
+report_checks -from _29043_ -to _30440_ -through _14506_
+```
+![50a](https://github.com/user-attachments/assets/ac51d9b6-5c91-4b17-8467-55026ce4e68e)
+
+![51a](https://github.com/user-attachments/assets/721d1e17-35f7-4611-b5f5-8d75d2c36e44)
 
 
