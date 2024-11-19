@@ -2132,9 +2132,7 @@ Screenshot of .magicrc file
 
 Incorrectly implemented poly.9 simple rule correction
 
-Screenshot of poly rules
 
-![image](https://github.com/user-attachments/assets/792a8dac-4e6e-48da-bcb5-dcb4956bd927)
 
 Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
 
@@ -2142,7 +2140,7 @@ Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
 
 ![image](https://github.com/user-attachments/assets/1806f7c4-2515-4c28-9e50-3c412464b40d)
 
-Below are the commands (highlighted in the screenshot) that need to be inserted in sky130A.tech file to update drc and fix this error
+Below are the commands  that need to be inserted in sky130A.tech file to update drc and fix this error
 
 ![image](https://github.com/user-attachments/assets/9a4b528e-d2a9-4af2-a7a0-a61ba46f634e)
 
@@ -2168,9 +2166,6 @@ Incorrectly implemented difftap.2 simple rule correction
 
 
 
-Screenshot of difftap rules
-
-![image](https://github.com/user-attachments/assets/365365d2-52d2-427b-9d3c-8be6bbf2be1f)
 
 Incorrectly implemented in tkcon window
 
