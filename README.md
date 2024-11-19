@@ -2132,25 +2132,24 @@ Screenshot of .magicrc file
 
 Incorrectly implemented poly.9 simple rule correction
 
-![21](https://github.com/user-attachments/assets/f27bdc9b-3b21-47c9-88f5-d977343f7f5e)
-
 Screenshot of poly rules
 
-![Screenshot from 2024-03-21 22-54-49](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/9260cf37-5933-44a1-8362-597183644334)
+![image](https://github.com/user-attachments/assets/792a8dac-4e6e-48da-bcb5-dcb4956bd927)
 
 Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
 
-![Screenshot from 2024-03-21 22-54-19](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/acfbcf69-020e-4b62-96bd-b7630aa74ef0)
-![Screenshot from 2024-03-21 23-54-11](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a05bd29a-b181-4e26-826a-d32f12696b2c)
+![image](https://github.com/user-attachments/assets/d3fb46b5-f512-4702-aa3f-b17aef2f73f1)
 
-New commands inserted in sky130A.tech file to update drc
+![image](https://github.com/user-attachments/assets/1806f7c4-2515-4c28-9e50-3c412464b40d)
 
-![Screenshot from 2024-03-21 23-58-44](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/dc30df54-3282-42f0-8e7d-fc4d8877ed64)
-![Screenshot from 2024-03-21 23-09-50](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d112ca07-854c-41e7-8822-c269e21defea)
+Below are the commands (highlighted in the screenshot) that need to be inserted in sky130A.tech file to update drc and fix this error
+
+![image](https://github.com/user-attachments/assets/9a4b528e-d2a9-4af2-a7a0-a61ba46f634e)
+
+![image](https://github.com/user-attachments/assets/96792114-34ca-4f7c-b2a0-5c1705958299)
 
 Commands to run in tkcon window
-
-```tcl
+```
 # Loading updated tech file
 tech load sky130A.tech
 
@@ -2163,58 +2162,23 @@ drc why
 
 Screenshot of magic window with rule implemented
 
-![Screenshot from 2024-03-21 23-13-11](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b18e8e07-ef0f-40fb-9b6d-8aae878a23c6)
-![Screenshot from 2024-03-22 00-00-40](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d5afe8d8-691b-485d-a89a-8f901e18b56e)
+![image](https://github.com/user-attachments/assets/27812378-5d66-4969-984c-643d7e810c42)
 
-**Incorrectly implemented difftap.2 simple rule correction**
+Incorrectly implemented difftap.2 simple rule correction
+
+
 
 Screenshot of difftap rules
 
-![Screenshot from 2024-03-22 00-14-47](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/086b7a66-b60a-470a-b5c0-a5ac938ebec3)
+![image](https://github.com/user-attachments/assets/365365d2-52d2-427b-9d3c-8be6bbf2be1f)
 
-Incorrectly implemented difftap.2 rule no drc violation even though spacing < 0.42u
+Incorrectly implemented in tkcon window
 
-![Screenshot from 2024-03-22 00-14-36](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a2d0d739-2df5-4eb5-ab78-c80d366e24e4)
+![image](https://github.com/user-attachments/assets/b235386e-aa46-49cc-8b74-dbcfabeb9f2e)
 
-New commands inserted in sky130A.tech file to update drc
-
-![Screenshot from 2024-03-22 00-26-43](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/b5892f9b-9c5d-4b1b-baa2-6fe45f3965b1)
 
 Commands to run in tkcon window
-
-```tcl
-# Loading updated tech file
-tech load sky130A.tech
-
-# Must re-run drc check to see updated drc errors
-drc check
-
-# Selecting region displaying the new errors and getting the error messages 
-drc why
 ```
-
-Screenshot of magic window with rule implemented
-
-![Screenshot from 2024-03-22 00-29-22](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/a3f92160-6701-48fb-b6cf-e4c41dc4a531)
-
-**Incorrectly implemented nwell.4 complex rule correction**
-
-Screenshot of nwell rules
-
-![Screenshot from 2024-03-22 00-51-34](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/4ad4901d-0b9a-4339-89e3-7bb3fce2766d)
-
-Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
-
-![Screenshot from 2024-03-22 00-52-51](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/87da8944-0ad8-455d-97ec-3909eac656c3)
-
-New commands inserted in sky130A.tech file to update drc
-
-![Screenshot from 2024-03-22 01-03-42](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/886c6930-6314-4a6f-97d9-6b8423444ac0)
-![Screenshot from 2024-03-22 01-04-04](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/d9808e9a-42c2-4421-9b82-2ef65a5a1ad7)
-
-Commands to run in tkcon window
-
-```tcl
 # Loading updated tech file
 tech load sky130A.tech
 
@@ -2228,9 +2192,10 @@ drc check
 drc why
 ```
 
-Screenshot of magic window with rule implemented
+Screenshot of magic window with rule implemented showing no errors found 
 
-![Screenshot from 2024-03-22 01-10-25](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/49b1004d-f860-4ca7-86f4-4d79784a01cf)
+![image](https://github.com/user-attachments/assets/deaff09a-d890-4403-a293-5be3e9993a41)
+
 
 ## Day 4
 Pre-layout timing analysis and importance of good clock tree
