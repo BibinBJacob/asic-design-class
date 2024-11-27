@@ -3715,9 +3715,9 @@ set_clock_transition [expr 0.05 * $PERIOD] [get_clocks clk]
 
 set_input_transition [expr $PERIOD * 0.08] [get_ports reset]
 ```
-synthesis report
 
-```
+
+
 
 
 * With reference to the workshop, we have used a similar script that automates the entire flow with a single command.
