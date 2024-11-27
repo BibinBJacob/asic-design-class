@@ -3653,4 +3653,158 @@ sudo make gui_final
 ```
 ![Screenshot from 2024-11-25 22-52-40](https://github.com/user-attachments/assets/e70e1e97-9975-45c3-add4-47f575822557)
 
+## ORFS for RVMYTH RISC-V :
+config.mk file 
+```
+export DESIGN_NICKNAME = rvmyth
+export DESIGN_NAME = RV_CPU
+export PLATFORM    = sky130hd
+
+export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/RV_CPU.v \
+					   $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/include/clk_gate.v
+
+
+export VERILOG_INCLUDE_DIRS = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/include
+
+export SDC_FILE = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
+
+export PDN_TCL = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/pdn.tcl
+
+export SYNTH_HIERARCHICAL = 1
+export RTLMP_FLOW ?= 1
+
+export PLACE_PINS_ARGS = -exclude left:0-150 -exclude left:300-500: -exclude right:* -exclude top:* -exclude bottom:*
+
+export DIE_AREA   = 0 0 600 600
+export CORE_AREA  = 20 20 590 590
+
+export MACRO_PLACE_HALO = 50 50
+export MACRO_PLACE_CHANNEL = 70 70
+export TNS_END_PERCENT = 100
+
+export REMOVE_ABC_BUFFERS = 1
+
+```
+
+constraints file
+```
+set_units -time ns
+set PERIOD 10.05
+create_clock [get_ports {clk}] -name clk -period $PERIOD
+set_clock_uncertainty [expr 0.05 * $PERIOD] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * $PERIOD] -hold [get_clocks clk]
+set_clock_transition [expr 0.05 * $PERIOD] [get_clocks clk]
+
+set_input_transition [expr $PERIOD * 0.08] [get_ports reset]
+```
+synthesis report
+
+```
+=== RV_CPU ===
+
+   Number of wires:               7226
+   Number of wire bits:           7235
+   Number of public wires:        1401
+   Number of public wire bits:    1410
+   Number of ports:                  3
+   Number of port bits:             12
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7095
+     sky130_fd_sc_hd__a2111o_1       1
+     sky130_fd_sc_hd__a2111oi_0     15
+     sky130_fd_sc_hd__a2111oi_1      7
+     sky130_fd_sc_hd__a2111oi_2      9
+     sky130_fd_sc_hd__a2111oi_4      2
+     sky130_fd_sc_hd__a211o_1        4
+     sky130_fd_sc_hd__a211oi_1      11
+     sky130_fd_sc_hd__a211oi_2       2
+     sky130_fd_sc_hd__a21bo_2        1
+     sky130_fd_sc_hd__a21boi_0       7
+     sky130_fd_sc_hd__a21boi_1       1
+     sky130_fd_sc_hd__a21o_1        22
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__a21oi_1      905
+     sky130_fd_sc_hd__a221o_1        2
+     sky130_fd_sc_hd__a221oi_1      92
+     sky130_fd_sc_hd__a22o_1        86
+     sky130_fd_sc_hd__a22oi_1      504
+     sky130_fd_sc_hd__a22oi_2        2
+     sky130_fd_sc_hd__a2bb2oi_2      1
+     sky130_fd_sc_hd__a311o_1        3
+     sky130_fd_sc_hd__a311oi_1      19
+     sky130_fd_sc_hd__a31o_2        18
+     sky130_fd_sc_hd__a31oi_1       12
+     sky130_fd_sc_hd__a41oi_1        4
+     sky130_fd_sc_hd__a41oi_2        1
+     sky130_fd_sc_hd__and2_0         1
+     sky130_fd_sc_hd__and2_1        11
+     sky130_fd_sc_hd__and3_1       109
+     sky130_fd_sc_hd__and3b_1        1
+     sky130_fd_sc_hd__and4_1         1
+     sky130_fd_sc_hd__and4b_1        1
+     sky130_fd_sc_hd__buf_1         44
+     sky130_fd_sc_hd__buf_12         1
+     sky130_fd_sc_hd__buf_2         19
+     sky130_fd_sc_hd__buf_4          2
+     sky130_fd_sc_hd__buf_6          1
+     sky130_fd_sc_hd__clkbuf_1     609
+     sky130_fd_sc_hd__conb_1         1
+     sky130_fd_sc_hd__dfxtp_1     1274
+     sky130_fd_sc_hd__fa_1           3
+     sky130_fd_sc_hd__ha_1         135
+     sky130_fd_sc_hd__inv_1        113
+     sky130_fd_sc_hd__mux2_2         1
+     sky130_fd_sc_hd__mux2i_1       54
+     sky130_fd_sc_hd__nand2_1     1440
+     sky130_fd_sc_hd__nand2b_1      31
+     sky130_fd_sc_hd__nand3_1      290
+     sky130_fd_sc_hd__nand3b_1      33
+     sky130_fd_sc_hd__nand4_1      128
+     sky130_fd_sc_hd__nand4b_1       1
+     sky130_fd_sc_hd__nor2_1       230
+     sky130_fd_sc_hd__nor2b_1       51
+     sky130_fd_sc_hd__nor3_1        56
+     sky130_fd_sc_hd__nor3_2         2
+     sky130_fd_sc_hd__nor3b_1        3
+     sky130_fd_sc_hd__nor4_1        28
+     sky130_fd_sc_hd__nor4_2         1
+     sky130_fd_sc_hd__o2111a_1       3
+     sky130_fd_sc_hd__o2111ai_1      3
+     sky130_fd_sc_hd__o211a_1        1
+     sky130_fd_sc_hd__o211ai_1      38
+     sky130_fd_sc_hd__o21a_1         8
+     sky130_fd_sc_hd__o21ai_0      242
+     sky130_fd_sc_hd__o21ai_1       12
+     sky130_fd_sc_hd__o21ba_2        3
+     sky130_fd_sc_hd__o21bai_1      24
+     sky130_fd_sc_hd__o221ai_1      78
+     sky130_fd_sc_hd__o221ai_4       1
+     sky130_fd_sc_hd__o22a_1        34
+     sky130_fd_sc_hd__o22ai_1       72
+     sky130_fd_sc_hd__o311a_1        2
+     sky130_fd_sc_hd__o311ai_0       3
+     sky130_fd_sc_hd__o311ai_1       1
+     sky130_fd_sc_hd__o31a_1         5
+     sky130_fd_sc_hd__o31ai_1       56
+     sky130_fd_sc_hd__o32a_1         2
+     sky130_fd_sc_hd__o32ai_1        2
+     sky130_fd_sc_hd__o41ai_1        3
+     sky130_fd_sc_hd__or2_0          1
+     sky130_fd_sc_hd__or2_2         11
+     sky130_fd_sc_hd__or3_1         10
+     sky130_fd_sc_hd__or3b_1         2
+     sky130_fd_sc_hd__or3b_2         2
+     sky130_fd_sc_hd__or4_1         11
+     sky130_fd_sc_hd__or4b_1         1
+     sky130_fd_sc_hd__xnor2_1       47
+     sky130_fd_sc_hd__xnor2_2        1
+     sky130_fd_sc_hd__xor2_1         9
+
+   Chip area for module '\RV_CPU': 57322.476800
+     of which used for sequential elements: 25504.460800 (44.49%)
+
+
+```
 
