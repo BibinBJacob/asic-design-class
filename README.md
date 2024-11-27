@@ -3807,4 +3807,9 @@ synthesis report
 
 
 ```
+![Screenshot from 2024-11-27 07-19-09](https://github.com/user-attachments/assets/c307f229-0cb6-4afa-bdbd-48e2f620f93d)
 
+<img width="300" alt="Routing" src="https://github.com/user-attachments/assets/53d65a72-9dd6-4df6-a2aa-4ced243211fc">
+
+
+<img width="617" alt="Heatmap" src="https://github.com/user-attachments/assets/626d6d28-de82-472e-abad-f5168fb661cd">
