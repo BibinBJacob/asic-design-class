@@ -3733,7 +3733,7 @@ make
 
 ### Synthesis report:
 ![image](https://github.com/user-attachments/assets/f5875386-a8dd-4131-a28c-e2c1b80c0911)
-![image](https://github.com/user-attachments/assets/8d086cba-3770-406a-b5d3-1471158f0bc7)
+
 ```
 
 24. Printing statistics.
@@ -3840,7 +3840,6 @@ make
 ```
 
 ### Floorplanning report:
-![image](https://github.com/user-attachments/assets/48b36e63-98ab-41a1-93dc-98213bf9430b)
 ```
 
 ==========================================================================
