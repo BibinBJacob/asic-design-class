@@ -4000,10 +4000,12 @@ Total                  5.67e-03   1.47e-03   1.86e-08   7.14e-03 100.0%
 
 ![Screenshot from 2024-11-27 22-31-16](https://github.com/user-attachments/assets/d95aecec-8eb6-44b4-b0aa-334650103139)
 
-```
+
 
 The reports are :<br/>
 ![image](https://github.com/user-attachments/assets/816c9e34-0c30-4015-901a-388ce7d01730)
+
+```
 
 ==========================================================================
 detailed place report_tns
